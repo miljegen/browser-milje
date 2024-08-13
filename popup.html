@@ -1,6 +1,30 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body, html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+            }
+
+            #milje {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(50%, -50%);
+            }
+        </style>
+    </head>
     <body>
         <h1>browser-milje!</h1>
+        <img id="milje" src="assets/milje.png" alt="this should represent the milje">
         <script src="milje.js"></script>
     </body>
 </html>
