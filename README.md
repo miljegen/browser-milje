@@ -1,4 +1,8 @@
 # browser-milje
+<p align="center">
+  <img src="https://i.imgur.com/LRxKZdJ.jpeg" alt="i might need to edit this image a bit to go more with the whole computer/browser/internet theme"/>
+</p>
+
 ## a milje for your browser :)
 
 adds a milje table cloth on top of your browser viewport, bringing a classic piece of geriatric balkan home decor straight to your screen
