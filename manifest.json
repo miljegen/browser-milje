@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "browser-milje",
     "description": "adds a milje table cloth on top of your browser viewport",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "action": {
         "default_popup": "popup.html",
         "default_icon": "assets/browser-milje.png"
