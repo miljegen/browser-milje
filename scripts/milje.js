@@ -21,3 +21,6 @@ div.style.backgroundRepeat = 'no-repeat'
 div.style.backgroundPosition = 'center'
 div.style.transform = 'translateY(-50%)'
 document.body.appendChild(div)
+
+const message = { extensionDetected: true };
+window.postMessage(message, "*");
