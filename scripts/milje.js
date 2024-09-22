@@ -1,4 +1,7 @@
-console.log("browser-milje version 0.0.1")
+const manifestData = chrome.runtime.getManifest();
+const version = manifestData.version;
+
+console.log("browser-milje version " + version);
 
 const milje = document.createElement('div');
 const style = {
