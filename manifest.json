@@ -3,9 +3,13 @@
     "name": "browser-milje",
     "description": "adds a milje table cloth on top of your browser viewport",
     "version": "0.0.2",
+    "permissions": ["storage", "activeTab", "scripting"],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "assets/browser-milje.png"
+    },
+    "background": {
+        "service_worker": "background.js"
     },
     "icons": {
         "16": "assets/icon-16.png",
@@ -16,7 +20,7 @@
     "content_scripts": [
         {
             "matches": ["<all_urls>", "file:///"],
-            "js": ["scripts/milje.js"]
+            "js": ["scripts/milje.js", "scripts/contentScript.js"]
         }
     ],
     "browser_specific_settings": {

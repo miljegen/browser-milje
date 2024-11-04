@@ -20,6 +20,64 @@ const style = {
   transform : 'translateY(-50%)',
 }
 
+function convertImageToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  })
+}
+
+function openDatabase() {
+  return new Promise((resolve, reject) => {
+      const request = indexedDB.open("MiljeDB", 1);
+
+      request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          if (!db.objectStoreNames.contains("miljes")) {
+              db.createObjectStore("miljes", { keyPath: "id", autoIncrement: true });
+          }
+      };
+
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = (event) => reject(event.target.error);
+  });
+}
+
+async function saveImage(base64Milje) {
+  const db = await openDatabase();
+  const transaction = db.transaction("miljes", "readwrite");
+  const store = transaction.objectStore("miljes");
+
+  return new Promise((resolve, reject) => {
+      const request = store.add({ image: base64Milje });
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = reject;
+  });
+}
+
+async function getMiljes() {
+  const db = await openDatabase();
+  const transaction = db.transaction("images", "readonly");
+  const store = transaction.objectStore("images");
+
+  return new Promise((resolve, reject) => {
+      const request = store.getAll();
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = reject;
+  });
+}
+
+async function applyMilje(miljeId) {
+  const miljes = await getMiljes();
+  const selectedMilje = images.find(milje => milje.id === miljeId);
+
+  if (selectedImage) {
+      document.body.style.backgroundImage = `url(${selectedMilje.milje})`;
+  }
+}
+
 Object.assign(milje.style, style);
 
 //milje.style.backgroundImage='url(https://www.github.com/miljegen/browser-milje/blob/main/assets/milje.png)';
